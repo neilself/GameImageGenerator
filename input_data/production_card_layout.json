@@ -1,0 +1,40 @@
+
+{
+  "id": "production_card",
+  "width": "$use_image_width",
+  "height": "$use_image_height",
+  "image": "production_card_front_background_filename",
+  "children": [
+    {
+      "id": "resource_banner",
+      "width": "$use_image_width",
+      "height": "$use_image_height",
+      "align_horizontal": "$parent_center_horizontal",
+      "align_vertical": "$parent_bottom",
+      "bottom_margin": "resource_banner_margin",
+      "image": "production_icon_banner_filename",
+      "children": [
+        {
+          "id": "resource_icons",
+          "width": "$use_image_width",
+          "height": "$use_image_height",
+          "align_horizontal": "$parent_center_horizontal",
+          "align_vertical": "$parent_center_vertical",
+          "image_list": "food_icon_filename,wood_icon_filename,metal_icon_filename,crystal_icon_filename",
+          "image_count": "food,wood,metal,crystal"
+        }
+      ]
+    },
+    {
+      "id": "starting_card_icon",
+      "width": "$use_image_width",
+      "height": "$use_image_height",
+      "align_horizontal": "$parent_left",
+      "align_vertical": "$parent_top",
+      "top_margin": "resource_banner_margin",
+      "left_margin": "resource_banner_margin",
+      "image": "starting_badge_icon_filename",
+      "optional": "starting@1"
+    }
+  ]
+}

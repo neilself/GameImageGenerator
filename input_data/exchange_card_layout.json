@@ -1,0 +1,47 @@
+{
+  "id": "exchange_card",
+  "width": "$use_image_width",
+  "height": "$use_image_height",
+  "image": "exchange_card_front_background_filename",
+  "children": [
+    {
+      "id": "resource_banner",
+      "width": "$use_image_width",
+      "height": "$use_image_height",
+      "align_horizontal": "$parent_center_horizontal",
+      "align_vertical": "$parent_bottom",
+      "bottom_margin": "resource_banner_margin",
+      "image": "exchange_icon_banner_filename",
+      "children": [
+        {
+          "id": "resource_icons_from",
+          "width": "$use_image_width",
+          "height": "$use_image_height",
+          "align_horizontal": "$parent_center_horizontal",
+          "align_vertical": "$parent_top",
+          "top_margin": "resource_banner_vertical_padding",
+          "image_list": "food_icon_filename,wood_icon_filename,metal_icon_filename,crystal_icon_filename",
+          "image_count": "food_from,wood_from,metal_from,crystal_from"
+        },
+        {
+          "id": "arrow",
+          "width": "$use_image_width",
+          "height": "$use_image_height",
+          "align_horizontal": "$parent_center_horizontal",
+          "align_vertical": "$parent_center_vertical",
+          "image": "arrow_icon_filename"
+        },
+        {
+          "id": "resource_icons_to",
+          "width": "$use_image_width",
+          "height": "$use_image_height",
+          "align_horizontal": "$parent_center_horizontal",
+          "align_vertical": "$parent_bottom",
+          "bottom_margin": "resource_banner_vertical_padding",
+          "image_list": "food_icon_filename,wood_icon_filename,metal_icon_filename,crystal_icon_filename",
+          "image_count": "food_to,wood_to,metal_to,crystal_to"
+        }
+      ]
+    }
+  ]
+}

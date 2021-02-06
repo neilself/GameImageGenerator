@@ -1,0 +1,118 @@
+
+{
+  "id": "unit_card",
+  "width": "$use_image_width",
+  "height": "$use_image_height",
+  "image": "unit_card_front_background_filename",
+  "children": [
+    {
+      "id": "unit_card_header",
+      "width": "$use_image_width",
+      "height": "$use_image_height",
+      "horizontal_margin": "resource_banner_margin",
+      "vertical_margin": "resource_banner_margin",
+      "image": "unit_header_banner_filename",
+      "children": [
+        {
+          "id": "unit_card_header_text",
+          "width": "$match_parent",
+          "height": "$match_parent",
+          "horizontal_padding": "resource_banner_horizontal_padding",
+          "vertical_padding": "resource_banner_vertical_padding",
+          "font_name": "unit_card_header_font",
+          "font_size": "unit_card_header_font_size",
+          "max_text_row_count": "1",
+          "text": "name"
+        }
+      ]
+    },
+    {
+      "id": "unit_card_description_box",
+      "width": "$use_image_width",
+      "height": "$use_image_height",
+      "align_vertical": "$parent_bottom",
+      "horizontal_margin": "resource_banner_margin",
+      "vertical_margin": "resource_banner_margin",
+      "image": "unit_banner_filename",
+      "children": [
+        {
+          "id": "unit_card_ability_text",
+          "width": "$match_parent",
+          "height": "resource_icon_size",
+          "align_vertical": "$parent_top",
+          "horizontal_padding": "resource_banner_horizontal_padding",
+          "top_margin": "resource_banner_vertical_padding",
+          "text": "abilities"
+        },
+        {
+          "id": "unit_card_description_text",
+          "width": "$match_parent",
+          "height": "resource_icon_size * 2",
+          "align_vertical": "$parent_bottom",
+          "horizontal_padding": "resource_banner_horizontal_padding",
+          "bottom_margin": "resource_banner_vertical_padding",
+          "text": "description"
+        }
+      ]
+    },
+    {
+      "id": "unit_card_attribute_row",
+      "width": "$match_parent",
+      "height": "resource_icon_size + (2 * resource_banner_margin)",
+      "align_vertical": "$bottom_edge_to$top_edge_of@unit_card_description_box",
+      "align_horizontal": "$parent_center_horizontal",
+      "horizontal_margin": "resource_banner_margin + resource_banner_horizontal_padding",
+      "vertical_margin": "resource_banner_margin",
+      "children": [
+        {
+          "id": "unit_card_attack_attribute_icon",
+          "width": "resource_icon_size",
+          "height": "resource_icon_size",
+          "align_horizontal": "$parent_left",
+          "align_vertical": "$parent_center_vertical",
+          "left_margin": "resource_icon_size",
+          "image": "sword_arrow_icon_filename"
+        },
+        {
+          "id": "unit_card_attack_attribute_value",
+          "width": "resource_icon_size",
+          "height": "resource_icon_size",
+          "align_horizontal": "$right_edge_to$left_edge_of@unit_card_attack_attribute_icon",
+          "align_vertical": "$parent_center_vertical",
+          "text": "attack",
+          "font_name": "unit_card_header_font",
+          "font_size": "unit_card_attribute_font_size",
+          "max_text_row_count": "1"
+        },
+        {
+          "id": "unit_card_health_attribute_icon",
+          "width": "resource_icon_size",
+          "height": "resource_icon_size",
+          "align_horizontal": "$parent_right",
+          "align_vertical": "$parent_center_vertical",
+          "image": "heart_icon_filename"
+        },
+        {
+          "id": "unit_card_health_attribute_value",
+          "width": "resource_icon_size",
+          "height": "resource_icon_size",
+          "align_horizontal": "$right_edge_to$left_edge_of@unit_card_health_attribute_icon",
+          "align_vertical": "$parent_center_vertical",
+          "text": "health",
+          "font_name": "unit_card_header_font",
+          "font_size": "unit_card_attribute_font_size",
+          "max_text_row_count": "1"
+        }
+      ]
+    },
+    {
+      "id": "unit_card_main_image",
+      "width": "$use_image_width",
+      "height": "$use_image_height",
+      "align_horizontal": "$parent_center_horizontal",
+      "align_vertical": "$centered_between@unit_card_header@unit_card_attribute_row",
+      "top_margin": "50",
+      "image": "image_filename"
+    }
+  ]
+}
