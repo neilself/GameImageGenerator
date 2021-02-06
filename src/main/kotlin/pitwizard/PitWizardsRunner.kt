@@ -23,34 +23,34 @@ class PitWizardsRunner {
     val gen = ImageGenerator(resources, /* drawBoundingBoxes= */ true)
 
     val productionDataTable =
-      LayoutUtils.loadDataTableFromFile(INPUT_FILENAME_PRODUCTION_CARD_DATA.toString().toLowerCase(),
+      LayoutUtils.loadDataTableFromFile(INPUT_FILENAME_PRODUCTION_CARD_DATA.toLowerCase(),
         resources)
     val productionCardImages =
-      gen.createCards(productionDataTable, INPUT_FILENAME_PRODUCTION_CARD_LAYOUT.toString().toLowerCase())
+      gen.createCards(productionDataTable, INPUT_FILENAME_PRODUCTION_CARD_LAYOUT.toLowerCase())
     for (i in productionCardImages.indices) {
       LayoutUtils.writeImageOut(productionCardImages[i], "test_production_card_$i", resources)
     }
 
     val exchangeDataTable =
-      LayoutUtils.loadDataTableFromFile(INPUT_FILENAME_EXCHANGE_CARD_DATA.toString().toLowerCase(), resources)
+      LayoutUtils.loadDataTableFromFile(INPUT_FILENAME_EXCHANGE_CARD_DATA.toLowerCase(), resources)
     val exchangeCardImages =
-      gen.createCards(exchangeDataTable, INPUT_FILENAME_EXCHANGE_CARD_LAYOUT.toString().toLowerCase())
+      gen.createCards(exchangeDataTable, INPUT_FILENAME_EXCHANGE_CARD_LAYOUT.toLowerCase())
     for (i in exchangeCardImages.indices) {
       LayoutUtils.writeImageOut(exchangeCardImages[i], "test_exchange_card_$i", resources)
     }
 
     val upgradeDataTable =
-      LayoutUtils.loadDataTableFromFile(INPUT_FILENAME_UPGRADE_CARD_DATA.toString().toLowerCase(), resources)
+      LayoutUtils.loadDataTableFromFile(INPUT_FILENAME_UPGRADE_CARD_DATA.toLowerCase(), resources)
     val upgradeCardImages =
-      gen.createCards(upgradeDataTable, INPUT_FILENAME_UPGRADE_CARD_LAYOUT.toString().toLowerCase())
+      gen.createCards(upgradeDataTable, INPUT_FILENAME_UPGRADE_CARD_LAYOUT.toLowerCase())
     for (i in upgradeCardImages.indices) {
       LayoutUtils.writeImageOut(upgradeCardImages[i], "test_upgrade_card_$i", resources)
     }
 
     val unitDataTable =
-      LayoutUtils.loadDataTableFromFile(INPUT_FILENAME_UNIT_CARD_DATA.toString().toLowerCase(), resources)
+      LayoutUtils.loadDataTableFromFile(INPUT_FILENAME_UNIT_CARD_DATA.toLowerCase(), resources)
     val unitCardImages =
-      gen.createCards(unitDataTable, INPUT_FILENAME_UNIT_CARD_LAYOUT.toString().toLowerCase())
+      gen.createCards(unitDataTable, INPUT_FILENAME_UNIT_CARD_LAYOUT.toLowerCase())
     for (i in unitCardImages.indices) {
       LayoutUtils.writeImageOut(unitCardImages[i], "test_unit_card_$i", resources)
     }

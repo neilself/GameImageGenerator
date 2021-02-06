@@ -4,7 +4,10 @@ import com.beust.klaxon.Klaxon
 import com.cicero.cardgame.resources.GameResources
 import com.cicero.cardgame.resources.MainResources.Companion.CARD_SHEET_ROW_SIZE
 import com.sksamuel.scrimage.ImmutableImage
-import java.awt.*
+import java.awt.Color
+import java.awt.Font
+import java.awt.Point
+import java.awt.Rectangle
 import java.awt.font.FontRenderContext
 import java.awt.font.LineBreakMeasurer
 import java.awt.font.TextAttribute
@@ -69,8 +72,8 @@ class ImageGenerator(private val resources: GameResources, private val drawBound
 
     // Determine content size
     var contentImage = element.image
-    var contentWidth = element.width - (element.leftPadding + element.rightPadding)
-    var contentHeight = element.height - (element.topPadding + element.bottomPadding)
+    val contentWidth = element.width - (element.leftPadding + element.rightPadding)
+    val contentHeight = element.height - (element.topPadding + element.bottomPadding)
     if (contentImage != null && (contentImage.width != contentWidth || contentImage.height != contentHeight)) {
       contentImage = contentImage.scaleTo(contentWidth, contentHeight)
     }
@@ -123,7 +126,7 @@ class ImageGenerator(private val resources: GameResources, private val drawBound
         }
 
         // Recurse!
-        var childImage = createImageFromLayout(child, idBoxMap, Point(offsetWithPadding.x + childPositionX,
+        val childImage = createImageFromLayout(child, idBoxMap, Point(offsetWithPadding.x + childPositionX,
           offsetWithPadding.y + childPositionY))
 
         // These types of alignment happen after the image is created, rather than before, because they need the
@@ -131,12 +134,12 @@ class ImageGenerator(private val resources: GameResources, private val drawBound
         if (child.alignHorizontal.isAlignedToElementMode()) {
           childPositionX = resolveSingleTargetHorizontalEdgeAlignment(child, childImage, offsetWithPadding, idBoxMap)
         } else if (child.alignHorizontal.isAlignedBetweenElementsMode()) {
-          childPositionX = resolveBetweenTargetsHorizontalAlignment(child, childImage, offsetWithPadding, idBoxMap)
+          childPositionX = resolveBetweenTargetsHorizontalAlignment(child, childImage, idBoxMap)
         }
         if (child.alignVertical.isAlignedToElementMode()) {
           childPositionY = resolveSingleTargetVerticalEdgeAlignment(child, childImage, offsetWithPadding, idBoxMap)
         } else if (child.alignVertical.isAlignedBetweenElementsMode()) {
-          childPositionY = resolveBetweenTargetsVerticalAlignment(child, childImage, offsetWithPadding, idBoxMap)
+          childPositionY = resolveBetweenTargetsVerticalAlignment(child, childImage, idBoxMap)
         }
 
         // For debugging
@@ -179,8 +182,11 @@ class ImageGenerator(private val resources: GameResources, private val drawBound
     } - offset.y
   }
 
-  private fun resolveBetweenTargetsVerticalAlignment(child: LayoutElement, childImage: ImmutableImage, offset: Point,
-                                                     idBoxMap: Map<String, Rectangle>): Int {
+  private fun resolveBetweenTargetsVerticalAlignment(
+    child: LayoutElement,
+    childImage: ImmutableImage,
+    idBoxMap: Map<String, Rectangle>
+  ): Int {
     val targetBox1 = idBoxMap[child.alignVertical.targetId1] ?: throw IllegalArgumentException("Called " +
             "resolveBetweenTargetsVerticalAlignment() without target1 box available")
     val targetBox2 = idBoxMap[child.alignVertical.targetId2] ?: throw IllegalArgumentException("Called " +
@@ -223,8 +229,11 @@ class ImageGenerator(private val resources: GameResources, private val drawBound
     } - offset.x
   }
 
-  private fun resolveBetweenTargetsHorizontalAlignment(child: LayoutElement, childImage: ImmutableImage, offset: Point,
-                                                     idBoxMap: Map<String, Rectangle>): Int {
+  private fun resolveBetweenTargetsHorizontalAlignment(
+    child: LayoutElement,
+    childImage: ImmutableImage,
+    idBoxMap: Map<String, Rectangle>
+  ): Int {
     val targetBox1 = idBoxMap[child.alignHorizontal.targetId1] ?: throw IllegalArgumentException("Called " +
             "resolveBetweenTargetsHorizontalAlignment() without target1 box available")
     val targetBox2 = idBoxMap[child.alignHorizontal.targetId2] ?: throw IllegalArgumentException("Called " +

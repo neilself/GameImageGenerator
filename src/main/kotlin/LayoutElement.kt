@@ -48,7 +48,7 @@ fun createFromRawLayoutElement(resources: GameResources, textMap: Map<String, St
     else ImmutableImage.loader().fromFile(file)
 
   val imageListText = if (input.image_list != null) input.image_list.split(",") else null
-  var image_list = if (imageListText == null) null
+  val image_list = if (imageListText == null) null
     else mutableListOf<ImmutableImage>()
   if (image_list != null && imageListText != null) {
     for (text in imageListText) {
@@ -105,8 +105,8 @@ fun createFromRawLayoutElement(resources: GameResources, textMap: Map<String, St
   }
 
   // SECTION: Resolve vertical and horizontal alignments
-  var align_vertical = resolveVerticalAlignment(resources, input.align_vertical)
-  var align_horizontal = resolveHorizontalAlignment(resources, input.align_horizontal)
+  val align_vertical = resolveVerticalAlignment(input.align_vertical)
+  val align_horizontal = resolveHorizontalAlignment(input.align_horizontal)
 
   // SECTION: Resolve margins
   val horizontal_margin = resolveIntField(resources, input.horizontal_margin) ?: 0
@@ -242,7 +242,6 @@ fun findFileFromImageText(resources: GameResources, filename: String?): File? {
   if (filename == null) {
     return null
   }
-  println("Neil2 find file: $filename")
   val f = findFile(filename)
   if (f != null) {
     return f
@@ -256,7 +255,6 @@ fun findFile(filename: String): File? {
   start.walk().forEach {
     if (it.name == filename) {
       return it
-    } else {
     }
   }
   return null
@@ -328,7 +326,7 @@ fun countChars(str: String, ch: Char): Int {
   return str.filter { it == ch }.count()
 }
 
-fun resolveVerticalAlignment(resources: GameResources, str: String?): VerticalAlignment {
+fun resolveVerticalAlignment(str: String?): VerticalAlignment {
   if (str == null) {
     return VerticalAlignment(VerticalAlignmentProperty.PARENT_TOP)
   } else if (str.isBlank()){
@@ -353,7 +351,7 @@ fun resolveVerticalAlignment(resources: GameResources, str: String?): VerticalAl
   }
 }
 
-fun resolveHorizontalAlignment(resources: GameResources, str: String?): HorizontalAlignment {
+fun resolveHorizontalAlignment(str: String?): HorizontalAlignment {
   if (str == null) {
     return HorizontalAlignment(HorizontalAlignmentProperty.PARENT_LEFT)
   } else if (str.isBlank()){
