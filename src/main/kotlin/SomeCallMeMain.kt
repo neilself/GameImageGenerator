@@ -8,7 +8,6 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import com.sksamuel.scrimage.ImmutableImage
 import java.nio.file.Path
-import java.time.LocalDateTime
 
 fun main() {
   createCards("pit_wizards.yaml")

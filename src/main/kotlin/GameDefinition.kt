@@ -1,7 +1,7 @@
 package com.cicero.cardgame
 
 /**
- * Classes for parsing YAML game config files.
+ * Classes for parsing yaml game config files.
  */
 
 data class GameEntityCollection(val data_filename: String, val layout_filename: String, val output_filename_prefix:

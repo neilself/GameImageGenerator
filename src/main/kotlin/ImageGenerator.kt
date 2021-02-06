@@ -1,8 +1,11 @@
 package com.cicero.cardgame
 
-import com.beust.klaxon.Klaxon
 import com.cicero.cardgame.resources.GameResources
 import com.cicero.cardgame.resources.MainResources.Companion.CARD_SHEET_ROW_SIZE
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
+import com.fasterxml.jackson.module.kotlin.readValue
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import com.sksamuel.scrimage.ImmutableImage
 import java.awt.Color
 import java.awt.Font
@@ -50,7 +53,9 @@ class ImageGenerator(private val resources: GameResources, private val drawBound
   fun createCards(dataTable: DataTable, filenameId: String, cache: FileImageCache): List<ImmutableImage> {
     val rawLayout = getRawLayout(filenameId)
     val imagesList = mutableListOf<ImmutableImage>()
+    println("*** Creating images for layout $filenameId, ${dataTable.getRowIdSet().size} row id's")
     for (rowId in dataTable.getRowIdSet()) {
+      println("Creating image for row id $rowId")
       val layout = createFromRawLayoutElement(resources, cache, dataTable.getMapForRowId(rowId), rawLayout)
       imagesList.add(createImageFromLayout(layout, mutableMapOf(), Point(0, 0)))
     }
@@ -59,8 +64,8 @@ class ImageGenerator(private val resources: GameResources, private val drawBound
 
   private fun getRawLayout(filenameId: String): RawLayoutElement {
     val text = File(resources.getString(filenameId)).bufferedReader().readText()
-    return Klaxon()
-      .parse<RawLayoutElement>(text) ?: throw IllegalStateException("Unable to parse raw layout element")
+    val mapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
+    return mapper.readValue(text)
   }
 
   /**

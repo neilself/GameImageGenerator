@@ -18,10 +18,10 @@
     input_filename_exchange_card_data: input_data\exchange_cards.csv
     input_filename_upgrade_card_data: input_data\upgrade_cards.csv
     input_filename_unit_card_data: input_data\unit_cards.csv
-    input_filename_unit_card_layout: input_data\unit_card_layout.json
-    input_filename_production_card_layout: input_data\production_card_layout.json
-    input_filename_exchange_card_layout: input_data\exchange_card_layout.json
-    input_filename_upgrade_card_layout: input_data\upgrade_card_layout.json
+    input_filename_unit_card_layout: input_data\unit_card_layout.yaml
+    input_filename_production_card_layout: input_data\production_card_layout.yaml
+    input_filename_exchange_card_layout: input_data\exchange_card_layout.yaml
+    input_filename_upgrade_card_layout: input_data\upgrade_card_layout.yaml
 
     production_icon_banner_filename: production_icon_banner.png
     exchange_icon_banner_filename: exchange_icon_banner.png

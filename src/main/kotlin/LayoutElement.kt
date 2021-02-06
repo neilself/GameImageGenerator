@@ -8,7 +8,7 @@ import java.math.RoundingMode
 
 /**
  * This class represents the second phase of laying things out. Here, the 'raw' layout elements that were simply parsed
- * json, are converted into layout elements with meaningful values. For example, an image property that indirectly
+ * yaml, are converted into layout elements with meaningful values. For example, an image property that indirectly
  * refers to some image filename, will have that image loaded into the LayoutElement. A padding property written as
  * the string name of a constant, will have that constant resolved to a number (and have arithmetic applied, if any is
  * present in the property).

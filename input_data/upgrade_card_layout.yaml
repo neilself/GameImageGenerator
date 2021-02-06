@@ -1,0 +1,44 @@
+---
+id: upgrade_card
+width: "$use_image_width"
+height: "$use_image_height"
+image: upgrade_card_front_background_filename
+children:
+    - id: resource_banner
+      width: "$use_image_width"
+      height: "$use_image_height"
+      align_horizontal: "$parent_center_horizontal"
+      align_vertical: "$parent_bottom"
+      bottom_margin: resource_banner_margin
+      image: upgrade_icon_banner_filename
+      children:
+          - id: resource_icons
+            width: "$use_image_width"
+            height: "$use_image_height"
+            align_horizontal: "$parent_center_horizontal"
+            align_vertical: "$parent_center_vertical"
+            image_list: any_resource_icon_filename
+            image_count: upgrade_count
+          - id: left_upgrade_icon
+            width: "$use_image_width"
+            height: "$use_image_height"
+            align_horizontal: "$right_edge_to$left_edge_of@resource_icons"
+            align_vertical: "$parent_center_vertical"
+            image: arrow_icon_filename
+            flip_vertical: 'true'
+          - id: right_upgrade_icon
+            width: "$use_image_width"
+            height: "$use_image_height"
+            align_horizontal: "$left_edge_to$right_edge_of@resource_icons"
+            align_vertical: "$parent_center_vertical"
+            image: arrow_icon_filename
+            flip_vertical: 'true'
+    - id: starting_card_icon
+      width: "$use_image_width"
+      height: "$use_image_height"
+      align_horizontal: "$parent_left"
+      align_vertical: "$parent_top"
+      top_margin: resource_banner_margin
+      left_margin: resource_banner_margin
+      image: starting_badge_icon_filename
+      optional: starting@1

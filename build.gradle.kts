@@ -19,6 +19,7 @@ dependencies {
     implementation("com.beust:klaxon:5.0.1")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.1")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.+")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
 //    implementation("com.github.jitpack:android-example:1.0.1")
 //    implementation("com.github.keelar.exprk:ExprK:1.0-SNAPSHOT")
 //    implementation("com.github.keelar.exprk:ExprK:")
