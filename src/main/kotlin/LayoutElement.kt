@@ -43,9 +43,6 @@ fun createFromRawLayoutElement(resources: GameResources, cache: FileImageCache, 
 
   // SECTION: Resolve image(s)
   val imageText = textMap[input.image] ?: input.image
-//  val file = findFileFromImageText(resources, imageText)
-//  var image = if (file == null) null
-//    else ImmutableImage.loader().fromFile(file)
   var image = loadImageFromFilename(cache, resources, imageText)
 
   val imageListText = if (input.image_list != null) input.image_list.split(",") else null
@@ -53,9 +50,6 @@ fun createFromRawLayoutElement(resources: GameResources, cache: FileImageCache, 
     else mutableListOf<ImmutableImage>()
   if (image_list != null && imageListText != null) {
     for (text in imageListText) {
-//      val f = findFileFromImageText(resources, text)
-//      val img = if (f != null) ImmutableImage.loader().fromFile(f)
-//        else throw IllegalStateException("Couldn't find file for $text")
       val img = loadImageFromFilename(cache, resources, text) ?: throw IllegalStateException("Couldn't load image " +
               "file for $text")
       image_list.add(img)
