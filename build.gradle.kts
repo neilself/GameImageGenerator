@@ -10,15 +10,18 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
     jcenter()
-//    maven("https://jitpack.io")
+    maven("https://jitpack.io")
 }
 
 dependencies {
     testImplementation(kotlin("test-junit"))
     implementation("com.sksamuel.scrimage:scrimage-core:4.0.12")
     implementation("com.beust:klaxon:5.0.1")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.+")
 //    implementation("com.github.jitpack:android-example:1.0.1")
-//    implementation("com.github.keelar.exprk:ExprK:1.0")
+//    implementation("com.github.keelar.exprk:ExprK:1.0-SNAPSHOT")
+//    implementation("com.github.keelar.exprk:ExprK:")
 }
 
 tasks.test {

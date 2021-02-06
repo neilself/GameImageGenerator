@@ -1,0 +1,65 @@
+---
+  game_title: Pit Wizards
+  game_entity_collections:
+    - data_filename: input_filename_production_card_data
+      layout_filename: input_filename_production_card_layout
+      output_filename_prefix: test_production_card_
+    - data_filename: input_filename_exchange_card_data
+      layout_filename: input_filename_exchange_card_layout
+      output_filename_prefix: test_exchange_card_
+    - data_filename: input_filename_upgrade_card_data
+      layout_filename: input_filename_upgrade_card_layout
+      output_filename_prefix: test_upgrade_card_
+    - data_filename: input_filename_unit_card_data
+      layout_filename: input_filename_unit_card_layout
+      output_filename_prefix: test_unit_card_
+  game_resources:
+    input_filename_production_card_data: input_data\production_cards.csv
+    input_filename_exchange_card_data: input_data\exchange_cards.csv
+    input_filename_upgrade_card_data: input_data\upgrade_cards.csv
+    input_filename_unit_card_data: input_data\unit_cards.csv
+    input_filename_unit_card_layout: input_data\unit_card_layout.json
+    input_filename_production_card_layout: input_data\production_card_layout.json
+    input_filename_exchange_card_layout: input_data\exchange_card_layout.json
+    input_filename_upgrade_card_layout: input_data\upgrade_card_layout.json
+
+    production_icon_banner_filename: production_icon_banner.png
+    exchange_icon_banner_filename: exchange_icon_banner.png
+    upgrade_icon_banner_filename: upgrade_icon_banner.png
+    unit_banner_filename: unit_banner.png
+    unit_header_banner_filename: unit_header_banner.png
+
+    production_card_front_background_filename: old_man.png
+    exchange_card_front_background_filename: old_man.png
+    upgrade_card_front_background_filename: old_man.png
+    unit_card_front_background_filename: unit_background.png
+
+    arrow_icon_filename: arrow_icon.png
+    food_icon_filename: food_icon.png
+    wood_icon_filename: wood_icon.png
+    metal_icon_filename: metal_icon.png
+    crystal_icon_filename: crystal_icon.png
+    starting_badge_icon_filename: gem_icon.png
+    any_resource_icon_filename: any_resource_icon.png
+    heart_icon_filename: heart_icon.png
+    sword_arrow_icon_filename: sword_arrow_icon.png
+    coin_icon_filename: coin_icon.png
+    bat_unit_filename: bat_unit.png
+
+    # Layout Stuff
+    #
+    # Following android dev rules: margin: amount of space between thing and other objects;
+    #                              padding: amount of space at edge within thing
+    resource_icon_size: 96
+    resource_banner_margin: 12
+    resource_banner_vertical_padding: 24
+    resource_banner_horizontal_padding: 42
+    resource_banner_width: 660
+
+    max_icons_per_row: 6
+    production_num_rows: 1
+    exchange_num_rows: 3
+
+    unit_card_header_font: Bookman Old Style
+    unit_card_header_font_size: 48
+    unit_card_attribute_font_size: 72
