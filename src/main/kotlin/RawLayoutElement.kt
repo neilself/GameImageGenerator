@@ -1,7 +1,7 @@
 package com.cicero.cardgame
 
 /**
- * This class is used for parsing direct from the json.
+ * This class is used for parsing layout files direct from the json.
  */
 data class RawLayoutElement(
   val id: String,

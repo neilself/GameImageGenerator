@@ -1,5 +1,9 @@
 package com.cicero.cardgame.resources
 
+/**
+ * A class for storing and retrieving 'resources' (constants) that are either general purpose, or specific to a
+ * particular game.
+ */
 open class GameResources() {
 
   protected val stringMap = mutableMapOf<String, String>()

@@ -1,6 +1,5 @@
 package com.cicero.cardgame.resources
 
-
 class MainResources: GameResources() {
 
   companion object {

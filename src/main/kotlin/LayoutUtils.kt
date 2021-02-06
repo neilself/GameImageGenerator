@@ -9,7 +9,7 @@ import java.awt.Graphics2D
 import java.io.File
 
 /**
- * A class with some useful utility functions.
+ * A class with some useful utility functions for laying things out.
  */
 object LayoutUtils {
 

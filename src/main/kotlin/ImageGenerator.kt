@@ -16,6 +16,9 @@ import java.awt.image.BufferedImage.TYPE_INT_ARGB
 import java.io.File
 import java.text.AttributedString
 
+/**
+ * Generates images based on a layout file -> LayoutElement, and a DataTable loaded from disk.
+ */
 class ImageGenerator(private val resources: GameResources, private val drawBoundingBoxes: Boolean = false) {
 
   // TODO: Maybe should just throw an exception if these aren't specified on an element with text?
