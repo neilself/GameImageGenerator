@@ -34,8 +34,8 @@ data class LayoutElement(val id: String,
                          val maxTextRowCount: Int,
                          val children: List<LayoutElement>? = null)
 
-fun createFromRawLayoutElement(resources: GameResources, textMap: Map<String, String>, input: RawLayoutElement):
-        LayoutElement {
+fun createFromRawLayoutElement(resources: GameResources, cache: FileImageCache, textMap: Map<String, String>,
+                               input: RawLayoutElement): LayoutElement {
   val id = input.id
 
   // SECTION: optional
@@ -43,18 +43,21 @@ fun createFromRawLayoutElement(resources: GameResources, textMap: Map<String, St
 
   // SECTION: Resolve image(s)
   val imageText = textMap[input.image] ?: input.image
-  val file = findFileFromImageText(resources, imageText)
-  var image = if (file == null) null
-    else ImmutableImage.loader().fromFile(file)
+//  val file = findFileFromImageText(resources, imageText)
+//  var image = if (file == null) null
+//    else ImmutableImage.loader().fromFile(file)
+  var image = loadImageFromFilename(cache, resources, imageText)
 
   val imageListText = if (input.image_list != null) input.image_list.split(",") else null
   val image_list = if (imageListText == null) null
     else mutableListOf<ImmutableImage>()
   if (image_list != null && imageListText != null) {
     for (text in imageListText) {
-      val f = findFileFromImageText(resources, text)
-      val img = if (f != null) ImmutableImage.loader().fromFile(f)
-        else throw IllegalStateException("Couldn't find file for $text")
+//      val f = findFileFromImageText(resources, text)
+//      val img = if (f != null) ImmutableImage.loader().fromFile(f)
+//        else throw IllegalStateException("Couldn't find file for $text")
+      val img = loadImageFromFilename(cache, resources, text) ?: throw IllegalStateException("Couldn't load image " +
+              "file for $text")
       image_list.add(img)
     }
   }
@@ -183,7 +186,7 @@ fun createFromRawLayoutElement(resources: GameResources, textMap: Map<String, St
                  else mutableListOf<LayoutElement>()
   if (input.children != null && children != null) {
     for (child in input.children) {
-      val childElement = createFromRawLayoutElement(resources, textMap, child)
+      val childElement = createFromRawLayoutElement(resources, cache, textMap, child)
       if (childElement.optional == false) {
         continue
       }
@@ -238,6 +241,24 @@ fun getOptionalValue(textMap: Map<String, String>, input: RawLayoutElement): Boo
   return textMap[list[0]] == list[1]
 }
 
+fun loadImageFromFilename(cache: FileImageCache, resources: GameResources, filename: String?): ImmutableImage? {
+  if (filename == null) {
+    return null
+  }
+  if (cache.hasImage(filename)) {
+    return cache.getImage(filename)
+  }
+  val f = findFileFromImageText(resources, filename) ?: return null
+  val image = ImmutableImage.loader().fromFile(f)
+  cache.addImage(filename, image)
+  return image
+}
+
+/**
+ * Finds a file using the argument filename. First this tries to find the filename itself, and if nothing comes up, then
+ * it treats the filename argument as a resource name, and then gets the related string from the GameResources to use
+ * for looking for a while.
+ */
 fun findFileFromImageText(resources: GameResources, filename: String?): File? {
   if (filename == null) {
     return null

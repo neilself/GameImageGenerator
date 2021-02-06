@@ -47,11 +47,11 @@ class ImageGenerator(private val resources: GameResources, private val drawBound
     return sheetImage
   }
 
-  fun createCards(dataTable: DataTable, filenameId: String): List<ImmutableImage> {
+  fun createCards(dataTable: DataTable, filenameId: String, cache: FileImageCache): List<ImmutableImage> {
     val rawLayout = getRawLayout(filenameId)
     val imagesList = mutableListOf<ImmutableImage>()
     for (rowId in dataTable.getRowIdSet()) {
-      val layout = createFromRawLayoutElement(resources, dataTable.getMapForRowId(rowId), rawLayout)
+      val layout = createFromRawLayoutElement(resources, cache, dataTable.getMapForRowId(rowId), rawLayout)
       imagesList.add(createImageFromLayout(layout, mutableMapOf(), Point(0, 0)))
     }
     return imagesList

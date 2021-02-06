@@ -8,12 +8,15 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import com.sksamuel.scrimage.ImmutableImage
 import java.nio.file.Path
+import java.time.LocalDateTime
 
 fun main() {
   createCards("pit_wizards.yaml")
 }
 
 fun createCards(gameDefinitionFilename: String) {
+  val startTime = System.currentTimeMillis()
+
   val mapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
   val gameDef: GameDefinition = mapper.readValue(Path.of(gameDefinitionFilename).toFile())
 
@@ -21,15 +24,17 @@ fun createCards(gameDefinitionFilename: String) {
   resources.addResources(createResourcesFromGameDefinition(gameDef))
   val gen = ImageGenerator(resources, /* drawBoundingBoxes= */ true)
   val totalImageList = mutableListOf<ImmutableImage>()
+  val cache = FileImageCache()
 
   for (map in gameDef.game_entity_collections) {
     val dataTable = LayoutUtils.loadDataTableFromFile(map.data_filename, resources)
-    val cardImages = gen.createCards(dataTable, map.layout_filename)
+    val cardImages = gen.createCards(dataTable, map.layout_filename, cache)
     for (i in cardImages.indices) {
       LayoutUtils.writeImageOut(cardImages[i], "${map.output_filename_prefix}$i", resources)
     }
     totalImageList.addAll(cardImages)
   }
 
-  gen.createImageSheet(totalImageList)
+  val timeTakenSec = (System.currentTimeMillis() - startTime.toDouble()) / 1000
+  println("Time taken: $timeTakenSec seconds")
 }
