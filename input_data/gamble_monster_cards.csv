@@ -1,0 +1,7 @@
+name,health,resistance,damage,victory_points,image_filename
+Skeleton,4,No resistances,2,1,
+Goblin,8,No resistances,4,2,
+Footman,6,Blunt -50%,6,3,
+Knight,10,Blunt -50%,8,4,
+Paladin,8,"Blunt -75%, Pierce -50%",10,5,
+Dragon,12,"Blunt -75%, Pierce -50%",12,6,

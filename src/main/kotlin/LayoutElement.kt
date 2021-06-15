@@ -3,7 +3,11 @@ package com.cicero.cardgame
 import com.cicero.cardgame.resources.GameResources
 import com.sksamuel.scrimage.ImmutableImage
 import com.github.keelar.exprk.Expressions
+import java.awt.Color
+import java.awt.image.BufferedImage
 import java.io.File
+import java.math.BigDecimal
+import java.math.MathContext
 import java.math.RoundingMode
 
 /**
@@ -42,8 +46,15 @@ fun createFromRawLayoutElement(resources: GameResources, cache: FileImageCache, 
   val optional = getOptionalValue(textMap, input)
 
   // SECTION: Resolve image(s)
+  val background_color = parseColorString(resources, input.background_color)
+  var image = if (background_color != null) createSinglePixelColorImage(background_color) else null
+
   val imageText = textMap[input.image] ?: input.image
-  var image = loadImageFromFilename(cache, resources, imageText)
+  if (image != null && imageText != null) {
+    throw IllegalStateException("Cannot have both background color and regular image defined for same element")
+  } else {
+    image = loadImageFromFilename(cache, resources, imageText)
+  }
 
   val imageListText = if (input.image_list != null) input.image_list.split(",") else null
   val image_list = if (imageListText == null) null
@@ -184,6 +195,7 @@ fun createFromRawLayoutElement(resources: GameResources, cache: FileImageCache, 
       if (childElement.optional == false) {
         continue
       }
+      // TODO: Need to recurse up with successive match_parent's, maybe need parent references in layout elements?
       if (childElement.width == SpecialIntProperty.MATCH_PARENT.prop) {
         childElement.width = width -
                 (left_padding + right_padding + childElement.leftMargin + childElement.rightMargin)
@@ -301,7 +313,7 @@ fun resolveIntField(resources: GameResources, str: String?): Int? {
     return newStr.toInt()
   }
 
-  return Expressions().setRoundingMode(RoundingMode.HALF_UP).eval(newStr).intValueExact()
+  return Expressions().eval(newStr).setScale(0, RoundingMode.HALF_UP).intValueExact()
 }
 
 fun resolveDoubleField(resources: GameResources, str: String?): Double? {
@@ -419,4 +431,35 @@ fun replaceIds(resources: GameResources, str: String): String {
   }
 
   return newStr
+}
+
+fun parseColorString(resources: GameResources, referenceString: String?): Color? {
+  if (referenceString.isNullOrBlank()) {
+    return null
+  }
+
+  val colorStr = resources.getString(referenceString)
+  val colorStringRegex = Regex("r(\\d+)g(\\d+)b(\\d+)a(\\d+)")
+  var matchResult = colorStringRegex.find(colorStr) ?: throw IllegalArgumentException("Color string didn't match regex")
+  if (matchResult.groupValues.size == 5) {
+    val values = matchResult.groupValues
+    return Color(
+      values[1].toIntOrNull() ?: throw IllegalArgumentException("'R' part of color string wasn't an int"),
+      values[2].toIntOrNull() ?: throw IllegalArgumentException("'G' part of color string wasn't an int"),
+      values[3].toIntOrNull() ?: throw IllegalArgumentException("'B' part of color string wasn't an int"),
+      values[4].toIntOrNull() ?: throw IllegalArgumentException("'A' part of color string wasn't an int"),
+    )
+  } else {
+    throw IllegalArgumentException("Color string didn't have right group number after regex match (4)")
+  }
+}
+
+fun createSinglePixelColorImage(color: Color): ImmutableImage {
+  val buffImage = BufferedImage(5, 5, BufferedImage.TYPE_INT_ARGB)
+  for (i in 0 until 5) {
+    for (j in 0 until 5) {
+      buffImage.setRGB(i, j, color.rgb)
+    }
+  }
+  return ImmutableImage.fromAwt(buffImage)
 }

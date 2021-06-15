@@ -70,6 +70,9 @@ object LayoutUtils {
       }
       sections.add(builder.toString())
     }
+    if (line[line.lastIndex] == ','){
+      sections.add("")
+    }
 
     return sections
   }

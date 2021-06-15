@@ -1,0 +1,84 @@
+---
+id: monster_card
+width: "$use_image_width"
+height: "$use_image_height"
+image: monster_card_front_background_filename
+children:
+  - id: monster_card_name
+    width: "$match_parent"
+    height: "monster_card_name_font_size + 18"
+    align_horizontal: "$parent_center_horizontal"
+    align_vertical: "$parent_top"
+    top_margin: 24
+    font_name: base_font
+    font_size: monster_card_name_font_size
+    max_text_row_count: 1
+    text: name
+  - id: attribute_numbers_row
+    width: "general_icon_size * 3"
+    height: general_icon_size
+    align_horizontal: "$parent_center_horizontal"
+    align_vertical: "$parent_bottom"
+    bottom_margin: "24"
+    children:
+      - id: health_number
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$parent_left"
+        align_vertical: "$parent_center_vertical"
+        text: health
+        font_name: base_font
+        font_size: monster_resource_font_size
+        max_text_row_count: '1'
+      - id: damage_number
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$left_edge_to$right_edge_of@health_number"
+        align_vertical: "$parent_center_vertical"
+        text: damage
+        font_name: base_font
+        font_size: monster_resource_font_size
+        max_text_row_count: '1'
+      - id: victor_points_number
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$left_edge_to$right_edge_of@damage_number"
+        align_vertical: "$parent_center_vertical"
+        text: victory_points
+        font_name: base_font
+        font_size: monster_resource_font_size
+        max_text_row_count: '1'
+  - id: attribute_icon_row
+    width: "general_icon_size * 3"
+    height: general_icon_size
+    align_horizontal: "$parent_center_horizontal"
+    align_vertical: "$parent_bottom"
+    bottom_margin: "general_icon_size + 24"
+    children:
+      - id: health_icon
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$parent_left"
+        align_vertical: "$parent_center_vertical"
+        image: health_icon_filename
+      - id: damage_icon
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$left_edge_to$right_edge_of@health_number"
+        align_vertical: "$parent_center_vertical"
+        image: damage_icon_filename
+      - id: victory_points_icon
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$left_edge_to$right_edge_of@damage_number"
+        align_vertical: "$parent_center_vertical"
+        image: victory_points_icon_filename
+  - id: resistance_description
+    width: "$match_parent"
+    height: 96
+    align_horizontal: "$parent_center_horizontal"
+    align_vertical: "$top_edge_to$bottom_edge_of@monster_card_name"
+    font_name: base_font
+    font_size: monster_card_resistance_font_size
+    max_text_row_count: 1
+    text: resistance

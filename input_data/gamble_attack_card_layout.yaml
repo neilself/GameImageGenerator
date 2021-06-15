@@ -1,0 +1,142 @@
+---
+id: attack_card
+width: "$use_image_width"
+height: "$use_image_height"
+image: attack_card_front_background_filename
+children:
+  - id: attack_card_name
+    width: "$match_parent"
+    height: "attack_card_name_font_size + 18"
+    align_horizontal: "$parent_center_horizontal"
+    align_vertical: "$parent_top"
+    top_margin: 24
+    font_name: base_font
+    font_size: attack_card_name_font_size
+    max_text_row_count: 1
+    text: name
+  - id: damage_icon_row
+    width: "general_icon_size * 3"
+    height: general_icon_size
+    align_horizontal: "$parent_left"
+    align_vertical: "$parent_bottom"
+    left_margin: 24
+    bottom_margin: "general_icon_size + 24"
+    background_color: damage_background_color
+    children:
+      - id: pierce_damage_icon
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$parent_center_horizontal"
+        align_vertical: "$parent_center_vertical"
+        image: pierce_icon_filename
+      - id: blunt_damage_icon
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$right_edge_to$left_edge_of@pierce_damage_icon"
+        align_vertical: "$parent_center_vertical"
+        image: blunt_icon_filename
+      - id: magic_damage_icon
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$left_edge_to$right_edge_of@pierce_damage_icon"
+        align_vertical: "$parent_center_vertical"
+        image: magic_icon_filename
+  - id: damage_numbers_row
+    width: "general_icon_size * 3"
+    height: general_icon_size
+    align_horizontal: "$parent_left"
+    align_vertical: "$parent_bottom"
+    left_margin: 24
+    bottom_margin: 24
+    background_color: damage_background_color
+    children:
+      - id: pierce_damage_number
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$parent_center_horizontal"
+        align_vertical: "$parent_center_vertical"
+        text: pierce_damage
+        font_name: base_font
+        font_size: attack_resource_font_size
+        max_text_row_count: '1'
+      - id: blunt_damage_number
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$right_edge_to$left_edge_of@pierce_damage_number"
+        align_vertical: "$parent_center_vertical"
+        text: blunt_damage
+        font_name: base_font
+        font_size: attack_resource_font_size
+        max_text_row_count: '1'
+      - id: magic_damage_number
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$left_edge_to$right_edge_of@pierce_damage_number"
+        align_vertical: "$parent_center_vertical"
+        text: magic_damage
+        font_name: base_font
+        font_size: attack_resource_font_size
+        max_text_row_count: '1'
+  - id: cost_icon_row
+    width: "general_icon_size * 3"
+    height: general_icon_size
+    align_horizontal: "$parent_right"
+    align_vertical: "$parent_bottom"
+    right_margin: 24
+    bottom_margin: "general_icon_size + 24"
+    background_color: cost_background_color
+    children:
+      - id: metal_cost_icon
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$parent_center_horizontal"
+        align_vertical: "$parent_center_vertical"
+        image: metal_icon_filename
+      - id: wood_cost_icon
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$right_edge_to$left_edge_of@metal_cost_icon"
+        align_vertical: "$parent_center_vertical"
+        image: wood_icon_filename
+      - id: crystal_cost_icon
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$left_edge_to$right_edge_of@metal_cost_icon"
+        align_vertical: "$parent_center_vertical"
+        image: crystal_icon_filename
+  - id: cost_numbers_row
+    width: "general_icon_size * 3"
+    height: general_icon_size
+    align_horizontal: "$parent_right"
+    align_vertical: "$parent_bottom"
+    right_margin: 24
+    bottom_margin: 24
+    background_color: cost_background_color
+    children:
+      - id: metal_cost_number
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$parent_center_horizontal"
+        align_vertical: "$parent_center_vertical"
+        text: metal_cost
+        font_name: base_font
+        font_size: attack_resource_font_size
+        max_text_row_count: '1'
+      - id: wood_cost_number
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$right_edge_to$left_edge_of@metal_cost_number"
+        align_vertical: "$parent_center_vertical"
+        text: wood_cost
+        font_name: base_font
+        font_size: attack_resource_font_size
+        max_text_row_count: '1'
+      - id: crystal_cost_number
+        width: general_icon_size
+        height: general_icon_size
+        align_horizontal: "$left_edge_to$right_edge_of@metal_cost_number"
+        align_vertical: "$parent_center_vertical"
+        text: crystal_cost
+        font_name: base_font
+        font_size: attack_resource_font_size
+        max_text_row_count: '1'

@@ -1,0 +1,52 @@
+---
+game_title: Project GambleFight
+game_entity_collections:
+    - data_filename: input_filename_attack_card_data
+      layout_filename: input_filename_attack_card_layout
+      output_filename_prefix: gamble_attack_card_
+    - data_filename: input_filename_talent_card_data
+      layout_filename: input_filename_talent_card_layout
+      output_filename_prefix: gamble_talent_card_
+    - data_filename: input_filename_monster_card_data
+      layout_filename: input_filename_monster_card_layout
+      output_filename_prefix: gamble_monster_card_
+game_resources:
+    input_filename_attack_card_data: input_data\gamble_attack_cards.csv
+    input_filename_attack_card_layout: input_data\gamble_attack_card_layout.yaml
+    input_filename_talent_card_data: input_data\gamble_talent_cards.csv
+    input_filename_talent_card_layout: input_data\gamble_talent_card_layout.yaml
+    input_filename_monster_card_data: input_data\gamble_monster_cards.csv
+    input_filename_monster_card_layout: input_data\gamble_monster_card_layout.yaml
+
+    attack_card_front_background_filename: blank_faded_yellow.png
+    talent_card_front_background_filename: blank_faded_yellow.png
+    monster_card_front_background_filename: blank_faded_yellow.png
+    blunt_icon_filename: blunt_icon.png
+    pierce_icon_filename: pierce_icon.png
+    magic_icon_filename: magic_icon.png
+    wood_icon_filename: wood_icon.png
+    metal_icon_filename: metal_icon.png
+    crystal_icon_filename: crystal_icon.png
+    health_icon_filename: heart_icon.png
+    damage_icon_filename: sword_arrow_icon.png
+    victory_points_icon_filename: coin_icon.png
+
+    cost_background_color: r191g191b191a255
+    damage_background_color: r127g201b255a255
+
+    # Layout Stuff
+    #
+    # Following android dev rules: margin: amount of space between thing and other objects;
+    #                              padding: amount of space at edge within thing
+    main_padding: 24
+    text_area_height: 300
+    general_icon_size: 96
+
+    base_font: Bookman Old Style
+    attack_card_name_font_size: 54
+    attack_resource_font_size: 54
+    talent_card_name_font_size: 54
+    talent_card_description_font_size: 36
+    monster_card_name_font_size: 54
+    monster_card_resistance_font_size: 36
+    monster_resource_font_size: 54

@@ -112,7 +112,8 @@ class ImageGenerator(private val resources: GameResources, private val drawBound
         var childPositionX = 0
         if (child.alignHorizontal.isSimplePropertyMode()) {
           childPositionX = when (child.alignHorizontal.prop1) {
-            HorizontalAlignmentProperty.PARENT_CENTER_HORIZONTAL -> (contentWidth - child.width) / 2
+            HorizontalAlignmentProperty.PARENT_CENTER_HORIZONTAL -> (contentWidth - child.width) / 2 -
+                    child.rightMargin + child.leftMargin
             HorizontalAlignmentProperty.PARENT_RIGHT -> contentWidth - child.rightMargin - child.width +
                     element.leftPadding
 
@@ -124,7 +125,8 @@ class ImageGenerator(private val resources: GameResources, private val drawBound
         var childPositionY = 0
         if (child.alignVertical.isSimplePropertyMode()) {
           childPositionY = when (child.alignVertical.prop1) {
-            VerticalAlignmentProperty.PARENT_CENTER_VERTICAL -> (contentHeight - child.height) / 2
+            VerticalAlignmentProperty.PARENT_CENTER_VERTICAL -> ((contentHeight - child.height) / 2) -
+                    child.bottomMargin + child.topMargin
             VerticalAlignmentProperty.PARENT_BOTTOM -> contentHeight - child.bottomMargin - child.height + element.topPadding
 
             // These two should be the same
@@ -269,26 +271,28 @@ class ImageGenerator(private val resources: GameResources, private val drawBound
 
     LayoutUtils.drawGraphicsBox(graphics, widthBounds, heightBounds, drawBoundingBoxes)
 
-    val attributedDescription = AttributedString(text)
-    attributedDescription.addAttribute(TextAttribute.FONT, font)
-    val lineMeasurer = LineBreakMeasurer(attributedDescription.iterator, FontRenderContext(graphics.fontRenderContext.transform, true, graphics
-      .fontRenderContext.usesFractionalMetrics()))
-    val paragraphStart = attributedDescription.iterator.beginIndex
-    val paragraphEnd = attributedDescription.iterator.endIndex
+    if (!text.isBlank()) {
+      val attributedDescription = AttributedString(text)
+      attributedDescription.addAttribute(TextAttribute.FONT, font)
+      val lineMeasurer = LineBreakMeasurer(attributedDescription.iterator, FontRenderContext(graphics.fontRenderContext.transform, true, graphics
+        .fontRenderContext.usesFractionalMetrics()))
+      val paragraphStart = attributedDescription.iterator.beginIndex
+      val paragraphEnd = attributedDescription.iterator.endIndex
 
-    val actualTextHeight = computeTotalTextHeight(lineMeasurer, paragraphStart, paragraphEnd, widthBounds,
-      maxRowCount)
-    var drawPosY = (heightBounds / 2) - (actualTextHeight / 2)
-    lineMeasurer.position = paragraphStart
+      val actualTextHeight = computeTotalTextHeight(lineMeasurer, paragraphStart, paragraphEnd, widthBounds,
+        maxRowCount)
+      var drawPosY = (heightBounds / 2) - (actualTextHeight / 2)
+      lineMeasurer.position = paragraphStart
 
-    while (lineMeasurer.position < paragraphEnd) {
-      val layout = lineMeasurer.nextLayout(widthBounds.toFloat())
-      val drawPosX = 0f
-      drawPosY += layout.ascent
+      while (lineMeasurer.position < paragraphEnd) {
+        val layout = lineMeasurer.nextLayout(widthBounds.toFloat())
+        val drawPosX = 0f
+        drawPosY += layout.ascent
 
-      layout.draw(graphics, drawPosX + ((widthBounds - layout.bounds.width) / 2).toFloat(), drawPosY)
+        layout.draw(graphics, drawPosX + ((widthBounds - layout.bounds.width) / 2).toFloat(), drawPosY)
 
-      drawPosY += layout.descent + layout.leading
+        drawPosY += layout.descent + layout.leading
+      }
     }
 
     return ImmutableImage.fromAwt(buffImage)

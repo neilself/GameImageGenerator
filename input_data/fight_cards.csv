@@ -1,0 +1,26 @@
+name,cost,image_filename,description
+Punch,0,punch_icon.png,Attacks one square in front for the current row. (2) damage
+Dodge,0,dodge_icon.png,Switches rows.
+Move,0,move_icon.png,Moves one space forward or backward.
+Absorb,0,absorb_icon.png,"Absorbs up to two damage from an attack, and turns it into one health or gold."
+Parry,0,parry_icon.png,Redirects up to two damage from an attack to the opponent.
+Meditate,0,meditate_icon.png,Gain two gold.
+Heal,0,heal_icon.png,Gain one health.
+Sweep Kick,2,sweep_kick_icon.png,Attacks one square in front to both rows. (2) damage
+Front Kick,2,front_kick_icon.png,Attacks two squares in front for the current row. (2) damage
+Uppercut,2,uppercut_icon.png,Attacks one square in front for the current row. (4) damage
+Flamethrower,2,flamethrower_icon.png,Attacks two squares in front for both rows. (1) damage
+Fireball,2,fireball_icon.png,Attacks in a line to the end of the current row. (1) damage
+Greater Meditate,2,greater_meditate_icon.png,Gain four gold.
+Greater Heal,2,greater_heal_icon.png,Gain two health.
+Greater Parry,2,greater_parry_icon.png,"Redirects up to four damage from an attack to the opponent, and adds one more damage on top."
+Greater Absorb,2,greater_absorb_icon.png,"Absorbs up to four damage from an attack, and turns all of it to gold or health."
+Power Up,2,power_up_icon.png,Increases damage of all attacks this round by 1. May only be used twice per round.
+Inner Focus,2,inner_focus_icon.png,Increases range of all attacks this round by 1. May only be used twice per round.
+Killer Intent,2,killer_intent_icon.png,Your next attack does +1 damage and pierces absorb/parry effects.
+Lightning Kick,4,lightning_kick_icon.png,Attacks two squares in front for the current row. (4) damage
+Air Slash,4,air_slash_icon.png,Attacks one square in front for both rows. (4) damage
+Shoryuken,4,shoryuken_icon.png,Attacks on square in front. (8) damage
+Explosion,4,explosion_icon.png,Attacks two squares in front for both rows. (2) damage
+Hadouken,4,hadouken_icon.png,Attacks in a line to the end of the current row. (2) damage
+Mirror Image,4,mirror_image_icon.png,Your next two attacks hit both rows.

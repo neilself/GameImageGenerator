@@ -1,0 +1,46 @@
+---
+id: fight_card
+width: "$use_image_width"
+height: "$use_image_height"
+image: fight_card_front_background_filename
+children:
+  - id: fight_card_main_image
+    width: "$use_image_width"
+    height: "$use_image_height"
+    horizontal_margin: "main_padding"
+    top_margin: "main_padding"
+    align_horizontal: "$parent_center_horizontal"
+    align_vertical: "$parent_top"
+    image: image_filename
+  - id: fight_card_cost_text
+    width: "$match_parent"
+    height: "52"
+    horizontal_margin: "main_padding"
+    bottom_margin: "main_padding"
+    align_horizontal: "$parent_right"
+    align_vertical: "$parent_bottom"
+    text: cost
+    font_name: fight_font
+    font_size: fight_card_name_font_size
+  - id: fight_card_text_area
+    # Fix this later
+    width: "592"
+    height: text_area_height
+    horizontal_margin: "main_padding"
+    align_horizontal: "$parent_center_horizontal"
+    align_vertical: "$bottom_edge_to$top_edge_of@fight_card_cost_text"
+    children:
+      - id: fight_card_name_text
+        width: "$match_parent"
+        height: "text_area_height / 4"
+        align_vertical: "$parent_top"
+        text: name
+        font_name: fight_font
+        font_size: fight_card_name_font_size
+      - id: fight_card_description_text
+        width: "$match_parent"
+        height: "text_area_height / 4 * 3"
+        align_vertical: "$parent_bottom"
+        text: description
+        font_name: fight_font
+        font_size: fight_card_description_font_size

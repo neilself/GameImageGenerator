@@ -1,0 +1,22 @@
+---
+game_title: Fight Game
+game_entity_collections:
+    - data_filename: input_filename_fight_card_data
+      layout_filename: input_filename_fight_card_layout
+      output_filename_prefix: test_fight_card_
+game_resources:
+    input_filename_fight_card_data: input_data\fight_cards.csv
+    input_filename_fight_card_layout: input_data\fight_card_layout.yaml
+
+    attack_card_front_background_filename: blank_faded_yellow.png
+
+    # Layout Stuff
+    #
+    # Following android dev rules: margin: amount of space between thing and other objects;
+    #                              padding: amount of space at edge within thing
+    main_padding: 24
+    text_area_height: 300
+
+    fight_font: Bookman Old Style
+    fight_card_name_font_size: 54
+    fight_card_description_font_size: 36

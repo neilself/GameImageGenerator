@@ -25,6 +25,7 @@ data class RawLayoutElement(
   val vertical_padding: String? = null,
   val top_padding: String? = null,
   val bottom_padding: String? = null,
+  val background_color: String? = null,
   val image: String? = null,
   val image_list: String? = null,
   val image_count: String? = null,

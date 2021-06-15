@@ -10,7 +10,9 @@ import com.sksamuel.scrimage.ImmutableImage
 import java.nio.file.Path
 
 fun main() {
-  createCards("pit_wizards.yaml")
+//  createCards("pit_wizards.yaml")
+//  createCards("fight_game.yaml")
+  createCards("gamble_game.yaml")
 }
 
 fun createCards(gameDefinitionFilename: String) {

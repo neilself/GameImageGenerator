@@ -16,7 +16,6 @@ repositories {
 dependencies {
     testImplementation(kotlin("test-junit"))
     implementation("com.sksamuel.scrimage:scrimage-core:4.0.12")
-    implementation("com.beust:klaxon:5.0.1")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.1")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.+")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
